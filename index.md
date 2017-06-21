@@ -32,4 +32,4 @@ For our paper "Visionaray: A Cross-Platform Ray Tracing Template Library", we re
   </tr>
 </table>
 
-Results in million rays per second, [http://www.sci.utah.edu/~wald/Publications/2007/ParallelBVHBuild/fastbuild.pdf](binned BVH builder), and [http://www.nvidia.ca/docs/IO/77714/sbvh.pdf](SBVH builder) in parentheses.
+Results in million rays per second, [binned BVH builder](http://www.sci.utah.edu/~wald/Publications/2007/ParallelBVHBuild/fastbuild.pdf), and [SBVH builder](http://www.nvidia.ca/docs/IO/77714/sbvh.pdf) in parentheses.
