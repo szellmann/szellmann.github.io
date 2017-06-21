@@ -32,7 +32,7 @@ rm -rf $BASEDIR/visionaray
 git clone https://github.com/szellmann/visionaray.git --recursive
 cd $BASEDIR/visionaray
 git checkout f894e7cc6fa800917d68f2737608041ac628d990
-git apply $BASEDIR/patches/0001-Benchmark-SSE.patch
+git apply $BASEDIR/patches/0001-Benchmark-SSE-NEON.patch
 git apply $BASEDIR/patches/0001-Assert-window-size-is-1024x1024.patch
 cd $BASEDIR
 mkdir -p build
