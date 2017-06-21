@@ -4,7 +4,7 @@ For our paper "Visionaray: A Cross-Platform Ray Tracing Template Library", we re
 
 <table border="0">
   <tr>
-    <td width="200"></td>
+    <td></td>
     <td>
       <img src="img/conference_ao.png" alt="Conference Room" width="200" class="inline" />
     </td>
@@ -23,7 +23,10 @@ For our paper "Visionaray: A Cross-Platform Ray Tracing Template Library", we re
   </tr>
   <tr>
     <td>Raspberry PI3 with ARM NEON</td>
-    <td>2.0 (2.3)</td>
+    <td>
+      Binned BVH: 2.0 Mrays/s<br />
+      Split BVH: 2.3 Mrays/s
+    </td>
     <td>1.2 (1.3)</td>
     <td>1.7 (1.9)</td>
   </tr>
