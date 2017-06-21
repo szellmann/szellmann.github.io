@@ -5,7 +5,9 @@ For our paper "Visionaray: A Cross-Platform Ray Tracing Template Library", we re
 <table border="0">
   <tr>
     <td width=280>
-      <img src="https://github.com/szellmann/szellmann.github.io/img/fairy_ao.png" alt="Fairy Forest" width="256" height="256" />
+      <img src="https://github.com/szellmann/szellmann.github.io/blob/master/img/conference_ao.png" alt="Conference Room" width="256" height="256" />
+      <img src="https://github.com/szellmann/szellmann.github.io/blob/master/img/fairy_ao.png" alt="Fairy Forest" width="256" height="256" />
+      <img src="https://github.com/szellmann/szellmann.github.io/blob/master/img/sibenik_ao.png" alt="Sibenik Cathedral" width="256" height="256" />
     </td>
   </tr>
 </table>
