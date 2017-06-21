@@ -5,13 +5,13 @@ For our paper "Visionaray: A Cross-Platform Ray Tracing Template Library", we re
 <table border="0">
   <tr>
     <td>
-      <img src="img/conference_ao.png" alt="Conference Room" width="256" height="256" />
+      <img src="img/conference_ao.png" alt="Conference Room" class="inline" />
     </td>
     <td>
-      <img src="img/fairy_ao.png" alt="Fairy Forest" width="256" height="256" />
+      <img src="img/fairy_ao.png" alt="Fairy Forest" class="inline" />
     </td>
     <td>
-      <img src="img/sibenik_ao.png" alt="Sibenik Cathedral" width="256" height="256" />
+      <img src="img/sibenik_ao.png" alt="Sibenik Cathedral" class="inline" />
     </td>
   </tr>
 </table>
