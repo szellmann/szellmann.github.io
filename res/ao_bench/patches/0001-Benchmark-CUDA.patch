@@ -1,0 +1,154 @@
+From 8018b5367eeb256bacfa79de5fc6a6504714bda1 Mon Sep 17 00:00:00 2001
+From: Stefan Zellmann <info@szellmann.de>
+Date: Tue, 20 Jun 2017 16:04:29 +0200
+Subject: [PATCH] Benchmark CUDA
+
+---
+ src/common/obj_loader.cpp   | 16 ++++++++--------
+ src/examples/ao_gpu/main.cu | 30 ++++++++++++++++++++++++++++--
+ 2 files changed, 36 insertions(+), 10 deletions(-)
+
+diff --git a/src/common/obj_loader.cpp b/src/common/obj_loader.cpp
+index abf886c5..580199dc 100644
+--- a/src/common/obj_loader.cpp
++++ b/src/common/obj_loader.cpp
+@@ -72,9 +72,9 @@ bool store_triangle(model& result, vertex_vector const& vertices, int i1, int i2
+ 
+     if (length(cross(tri.e1, tri.e2)) == 0.0f)
+     {
+-        std::cerr << "Warning: rejecting degenerate triangle: zero-based indices: ("
+-                  << i1 << ' ' << i2 << ' ' << i3 << "), v1|e1|e2: "
+-                  << tri.v1 << ' ' << tri.e1 << ' ' << tri.e2 << '\n';
++        //std::cerr << "Warning: rejecting degenerate triangle: zero-based indices: ("
++        //          << i1 << ' ' << i2 << ' ' << i3 << "), v1|e1|e2: "
++        //          << tri.v1 << ' ' << tri.e1 << ' ' << tri.e2 << '\n';
+         return false;
+     }
+     else
+@@ -341,7 +341,7 @@ void load_obj(std::string const& filename, model& mod)
+             }
+             else
+             {
+-                std::cerr << "Warning: file does not exist: " << mtl_path << '\n';
++                //std::cerr << "Warning: file does not exist: " << mtl_path << '\n';
+             }
+         }
+         else if ( qi::phrase_parse(it, text.cend(), grammar.r_usemtl, qi::blank, mtl_name) )
+@@ -428,7 +428,7 @@ void load_obj(std::string const& filename, model& mod)
+                                 }
+                                 else
+                                 {
+-                                    std::cerr << "Warning: unsupported pixel format\n";
++                                    //std::cerr << "Warning: unsupported pixel format\n";
+                                 }
+ 
+                                 mod.texture_map.insert(std::make_pair(mat_it->second.map_kd, std::move(tex)));
+@@ -437,7 +437,7 @@ void load_obj(std::string const& filename, model& mod)
+                             }
+                             else
+                             {
+-                                std::cerr << "Warning: cannot load texture from file: " << tex_filename << '\n';
++                                //std::cerr << "Warning: cannot load texture from file: " << tex_filename << '\n';
+                             }
+                         }
+ 
+@@ -451,7 +451,7 @@ void load_obj(std::string const& filename, model& mod)
+                     }
+                     else
+                     {
+-                        std::cerr << "Warning: file does not exist: " << tex_filename << '\n';
++                        //std::cerr << "Warning: file does not exist: " << tex_filename << '\n';
+                     }
+                 }
+ 
+@@ -466,7 +466,7 @@ void load_obj(std::string const& filename, model& mod)
+             }
+             else
+             {
+-                std::cerr << "Warning: material not present in mtllib: " << mtl_name << '\n';
++                //std::cerr << "Warning: material not present in mtllib: " << mtl_name << '\n';
+             }
+ 
+             geom_id = mod.materials.size() == 0 ? 0 : mod.materials.size() - 1;
+diff --git a/src/examples/ao_gpu/main.cu b/src/examples/ao_gpu/main.cu
+index b1919e62..c0a71bba 100644
+--- a/src/examples/ao_gpu/main.cu
++++ b/src/examples/ao_gpu/main.cu
+@@ -1,8 +1,10 @@
+ // This file is distributed under the MIT license.
+ // See the LICENSE file for details.
+ 
++#include <algorithm>
+ #include <exception>
+ #include <fstream>
++#include <iomanip>
+ #include <iostream>
+ #include <memory>
+ #include <ostream>
+@@ -30,6 +32,7 @@
+ 
+ #include <common/model.h>
+ #include <common/obj_loader.h>
++#include <common/timer.h>
+ #include <common/viewer_glut.h>
+ 
+ using namespace visionaray;
+@@ -118,6 +121,10 @@ struct renderer : viewer_type
+     int                                                 AO_Samples      = 8;
+     float                                               AO_Radius       = 0.1f;
+ 
++
++    // benchmark
++    std::vector<double>                                 times;
++
+ protected:
+ 
+     void on_display();
+@@ -280,7 +287,26 @@ void renderer::on_display()
+             AO_Samples
+             );
+ 
++    int warmup = 30;
++    int numruns = 250;
++    static int cnt = warmup;
++    cuda::timer t;
+     device_sched.frame(kernel, sparams, ++frame_num);
++    if (cnt >= warmup) times.push_back(t.elapsed() * 1000.0);
++    if (++cnt == numruns + warmup)
++    {
++        std::cout << std::fixed;
++        std::sort(times.begin(), times.end());
++        int num_rays = width() * height() + width() * height() * AO_Samples;
++        double sum = std::accumulate(times.begin(), times.end(), 0.0);
++        std::cout << "Rays/sec:    " << num_rays * times.size() * 1000.0 / sum << '\n';
++        std::cout << "Average:     " << sum / times.size() << " ms\n";
++        std::cout << "Median:      " << times[times.size() / 2] << " ms\n";
++        std::cout << "Max:         " << times.back() << " ms\n";
++        std::cout << "Min:         " << times[0] << " ms\n";
++        std::cout << std::endl;
++        exit(0);
++    }
+ 
+ 
+     // display the rendered image
+@@ -398,7 +424,7 @@ int main(int argc, char** argv)
+         return EXIT_FAILURE;
+     }
+ 
+-    std::cout << "Creating BVH...\n";
++    //std::cout << "Creating BVH...\n";
+ 
+     rend.host_bvh = build<index_bvh<model::triangle_type>>(
+             rend.mod.primitives.data(),
+@@ -406,7 +432,7 @@ int main(int argc, char** argv)
+             rend.builder == renderer::Split
+             );
+ 
+-    std::cout << "Ready\n";
++    //std::cout << "Ready\n";
+ 
+     // Copy data to GPU
+     try
+-- 
+2.11.0
+

@@ -1,0 +1,169 @@
+From 9047c78b3c0eec505fdaa73f404ce6634c80102e Mon Sep 17 00:00:00 2001
+From: Stefan Zellmann <info@szellmann.de>
+Date: Tue, 20 Jun 2017 16:12:15 +0200
+Subject: [PATCH] Benchmark builtin
+
+---
+ src/common/obj_loader.cpp | 16 ++++++++--------
+ src/examples/ao/main.cpp  | 32 +++++++++++++++++++++++++++++---
+ 2 files changed, 37 insertions(+), 11 deletions(-)
+
+diff --git a/src/common/obj_loader.cpp b/src/common/obj_loader.cpp
+index 1d421f1c..f68906d8 100644
+--- a/src/common/obj_loader.cpp
++++ b/src/common/obj_loader.cpp
+@@ -55,9 +55,9 @@ bool store_triangle(model& result, vertex_vector const& vertices, int i1, int i2
+ 
+     if (length(cross(tri.e1, tri.e2)) == 0.0f)
+     {
+-        std::cerr << "Warning: rejecting degenerate triangle: zero-based indices: ("
+-                  << i1 << ' ' << i2 << ' ' << i3 << "), v1|e1|e2: "
+-                  << tri.v1 << ' ' << tri.e1 << ' ' << tri.e2 << '\n';
++        //std::cerr << "Warning: rejecting degenerate triangle: zero-based indices: ("
++        //          << i1 << ' ' << i2 << ' ' << i3 << "), v1|e1|e2: "
++        //          << tri.v1 << ' ' << tri.e1 << ' ' << tri.e2 << '\n';
+         return false;
+     }
+     else
+@@ -298,7 +298,7 @@ void load_obj(std::string const& filename, model& mod)
+             }
+             else
+             {
+-                std::cerr << "Warning: file does not exist: " << mtl_path << '\n';
++                //std::cerr << "Warning: file does not exist: " << mtl_path << '\n';
+             }
+         }
+         else if ( qi::phrase_parse(it, text.cend(), grammar.r_usemtl, qi::blank, mtl_name) )
+@@ -388,7 +388,7 @@ void load_obj(std::string const& filename, model& mod)
+                                 }
+                                 else
+                                 {
+-                                    std::cerr << "Warning: unsupported pixel format\n";
++                                    //std::cerr << "Warning: unsupported pixel format\n";
+                                 }
+ 
+                                 mod.texture_map.insert(std::make_pair(mat_it->second.map_kd, std::move(tex)));
+@@ -397,7 +397,7 @@ void load_obj(std::string const& filename, model& mod)
+                             }
+                             else
+                             {
+-                                std::cerr << "Warning: cannot load texture from file: " << tex_filename << '\n';
++                                //std::cerr << "Warning: cannot load texture from file: " << tex_filename << '\n';
+                             }
+                         }
+ 
+@@ -411,7 +411,7 @@ void load_obj(std::string const& filename, model& mod)
+                     }
+                     else
+                     {
+-                        std::cerr << "Warning: file does not exist: " << tex_filename << '\n';
++                        //std::cerr << "Warning: file does not exist: " << tex_filename << '\n';
+                     }
+                 }
+ 
+@@ -426,7 +426,7 @@ void load_obj(std::string const& filename, model& mod)
+             }
+             else
+             {
+-                std::cerr << "Warning: material not present in mtllib: " << name << "FFFF" << '\n';
++                //std::cerr << "Warning: material not present in mtllib: " << name << "FFFF" << '\n';
+             }
+ 
+             geom_id = mod.materials.size() == 0 ? 0 : mod.materials.size() - 1;
+diff --git a/src/examples/ao/main.cpp b/src/examples/ao/main.cpp
+index 3f3ac6f1..0ddb89af 100644
+--- a/src/examples/ao/main.cpp
++++ b/src/examples/ao/main.cpp
+@@ -1,8 +1,10 @@
+ // This file is distributed under the MIT license.
+ // See the LICENSE file for details.
+ 
++#include <algorithm>
+ #include <exception>
+ #include <fstream>
++#include <iomanip>
+ #include <iostream>
+ #include <memory>
+ #include <ostream>
+@@ -30,6 +32,7 @@
+ 
+ #include <common/model.h>
+ #include <common/obj_loader.h>
++#include <common/timer.h>
+ #include <common/viewer_glut.h>
+ 
+ using namespace visionaray;
+@@ -43,7 +46,7 @@ using viewer_type = viewer_glut;
+ 
+ struct renderer : viewer_type
+ {
+-    using host_ray_type = basic_ray<simd::float4>;
++    using host_ray_type = basic_ray<float>;
+ 
+     renderer()
+         : viewer_type(512, 512, "Visionaray Ambient Occlusion Example")
+@@ -116,6 +119,10 @@ struct renderer : viewer_type
+     int                                         AO_Samples      = 8;
+     float                                       AO_Radius       = 0.1f;
+ 
++
++    // benchmark
++    std::vector<double>                         times;
++
+ protected:
+ 
+     void on_display();
+@@ -181,6 +188,10 @@ void renderer::on_display()
+ 
+     auto bgcolor = background_color();
+ 
++    int warmup = 30;
++    int numruns = 250;
++    static int cnt = warmup;
++    timer t;
+     host_sched.frame([&](R ray, random_sampler<S>& samp) -> result_record<S>
+     {
+         result_record<S> result;
+@@ -245,6 +256,21 @@ void renderer::on_display()
+ 
+         return result;
+     }, sparams, ++frame_num);
++    if (cnt >= warmup) times.push_back(t.elapsed() * 1000.0);
++    if (++cnt == numruns + warmup)
++    {
++        std::cout << std::fixed;
++        std::sort(times.begin(), times.end());
++        int num_rays = width() * height() + width() * height() * AO_Samples;
++        double sum = std::accumulate(times.begin(), times.end(), 0.0);
++        std::cout << "Rays/sec:    " << num_rays * times.size() * 1000.0 / sum << '\n';
++        std::cout << "Average:     " << sum / times.size() << " ms\n";
++        std::cout << "Median:      " << times[times.size() / 2] << " ms\n";
++        std::cout << "Max:         " << times.back() << " ms\n";
++        std::cout << "Min:         " << times[0] << " ms\n";
++        std::cout << std::endl;
++        exit(0);
++    }
+ 
+ 
+     // display the rendered image
+@@ -359,7 +385,7 @@ int main(int argc, char** argv)
+         return EXIT_FAILURE;
+     }
+ 
+-    std::cout << "Creating BVH...\n";
++    //std::cout << "Creating BVH...\n";
+ 
+     rend.host_bvh = build<index_bvh<model::triangle_type>>(
+             rend.mod.primitives.data(),
+@@ -367,7 +393,7 @@ int main(int argc, char** argv)
+             rend.builder == renderer::Split
+             );
+ 
+-    std::cout << "Ready\n";
++    //std::cout << "Ready\n";
+ 
+     float aspect = rend.width() / static_cast<float>(rend.height());
+ 
+-- 
+2.11.0
+

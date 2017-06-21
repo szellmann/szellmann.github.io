@@ -1,0 +1,29 @@
+From f173a80508592b419dc99d99666c4650cbe9857a Mon Sep 17 00:00:00 2001
+From: Stefan Zellmann <info@szellmann.de>
+Date: Tue, 20 Jun 2017 16:26:29 +0200
+Subject: [PATCH] Assert window size is 1024x1024 (CUDA)
+
+---
+ src/examples/ao_gpu/main.cu | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/examples/ao_gpu/main.cu b/src/examples/ao_gpu/main.cu
+index c0a71bba..143b7473 100644
+--- a/src/examples/ao_gpu/main.cu
++++ b/src/examples/ao_gpu/main.cu
+@@ -381,6 +381,12 @@ void renderer::on_key_press(key_event const& event)
+ 
+ void renderer::on_resize(int w, int h)
+ {
++    if (w != 1024 || h != 1024)
++    {
++        std::cerr << "Aborting, benchmark window size must be 1024x1024\n";
++        exit(0);
++    }
++
+     cam.set_viewport(0, 0, w, h);
+     float aspect = w / static_cast<float>(h);
+     cam.perspective(45.0f * constants::degrees_to_radians<float>(), aspect, 0.001f, 1000.0f);
+-- 
+2.11.0
+
