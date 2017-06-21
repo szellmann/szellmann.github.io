@@ -21,6 +21,10 @@ default location (/usr/local).
 
 Then please execute one of the benchmark-xxx.sh scripts.
 
+TIPP: you can call the benchmark like this
+```./benchmark-cuda.sh -j 5```
+(mind the space!) so that make uses N(=5) cores when compiling Visionaray.
+
 Please ensure that your windowing system lets you create a window of size
 1024 x 1024 px, the benchmark will fail otherwise.
 
