@@ -54,6 +54,12 @@ For our paper [Visionaray: A Cross-Platform Ray Tracing Template Library](https:
     <td>94.2 (105.6)</td>
   </tr>
   <tr>
+    <td>NVIDIA Titan (1st gen, Kepler)</td>
+    <td>114.4 (143.3)</td>
+    <td>55.5 (56.9)</td>
+    <td>81.5 (114.4.9)</td>
+  </tr>
+  <tr>
     <td>NVIDIA GTX 970M</td>
     <td>83.6 (107.1)</td>
     <td>32.7 (36.4)</td>
