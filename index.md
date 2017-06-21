@@ -16,10 +16,10 @@ For our paper [Visionaray: A Cross-Platform Ray Tracing Template Library](https:
     </td>
   </tr>
   <tr>
-    <td>Platform</td>
-    <td>Conference Room</td>
-    <td>Fairy Forest</td>
-    <td>Sibenik Cathedral</td>
+    <td><b>Platform<b /></td>
+    <td><b>onference Room<b /></td>
+    <td><b>Fairy Forest<b /></td>
+    <td><b>Sibenik Cathedral<b /></td>
   </tr>
   <tr>
     <td>Raspberry PI3 with ARM NEON</td>
