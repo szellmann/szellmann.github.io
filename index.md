@@ -24,28 +24,10 @@ For our paper [Visionaray: A Cross-Platform Ray Tracing Template Library](https:
     <td>Sibenik Cathedral</td>
   </tr>
   <tr>
-    <td>Raspberry PI3 with ARM NEON</td>
-    <td>2.0 (2.3)</td>
-    <td>1.2 (1.3)</td>
-    <td>1.7 (1.9)</td>
-  </tr>
-  <tr>
-    <td>NVIDIA GTX 970M</td>
-    <td>83.6 (107.1)</td>
-    <td>32.7 (36.4)</td>
-    <td>63.9 (87.9)</td>
-  </tr>
-  <tr>
-    <td>16-core dual socket Xeon E5-2690</td>
-    <td>102.0 (117.0)</td>
-    <td>55.0 (57.1)</td>
-    <td>94.2 (105.6)</td>
-  </tr>
-  <tr>
-    <td>NVIDIA Quadro K6000</td>
-    <td>142.4 (189.1)</td>
-    <td>63.1 (71.1)</td>
-    <td>113.2 (142.9)</td>
+    <td>Intel KNL with 64 cores and 256 threads</td>
+    <td>254.0 (273.2)</td>
+    <td>130.0 (130.4)</td>
+    <td>247.7 (268.2)</td>
   </tr>
   <tr>
     <td>NVIDIA GTX 980 Ti</td>
@@ -54,10 +36,28 @@ For our paper [Visionaray: A Cross-Platform Ray Tracing Template Library](https:
     <td>139.1 (188.5)</td>
   </tr>
   <tr>
-    <td>Intel KNL with 64 cores and 256 threads</td>
-    <td>254.0 (273.2)</td>
-    <td>130.0 (130.4)</td>
-    <td>247.7 (268.2)</td>
+    <td>NVIDIA Quadro K6000</td>
+    <td>142.4 (189.1)</td>
+    <td>63.1 (71.1)</td>
+    <td>113.2 (142.9)</td>
+  </tr>
+  <tr>
+    <td>16-core dual socket Xeon E5-2690</td>
+    <td>102.0 (117.0)</td>
+    <td>55.0 (57.1)</td>
+    <td>94.2 (105.6)</td>
+  </tr>
+  <tr>
+    <td>NVIDIA GTX 970M</td>
+    <td>83.6 (107.1)</td>
+    <td>32.7 (36.4)</td>
+    <td>63.9 (87.9)</td>
+  </tr>
+  <tr>
+    <td>Raspberry PI3 with ARM NEON</td>
+    <td>2.0 (2.3)</td>
+    <td>1.2 (1.3)</td>
+    <td>1.7 (1.9)</td>
   </tr>
 </table>
 
