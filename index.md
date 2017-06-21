@@ -50,3 +50,5 @@ For our paper [Visionaray: A Cross-Platform Ray Tracing Template Library](https:
 </table>
 
 Results are in Mrays/s, 1024 x 1024 px. images, averaged over 250 runs, 8 AO rays. We report results for the [binned BVH builder](http://www.sci.utah.edu/~wald/Publications/2007/ParallelBVHBuild/fastbuild.pdf), and the [SBVH builder](http://www.nvidia.ca/docs/IO/77714/sbvh.pdf) in parentheses.
+
+A tarball containing the benchmark script can be found here: https://github.com/szellmann/szellmann.github.io/blob/master/res/ao_bench.tar.gz, results for hardware platforms not listed here are highly welcome (please send those to info (at) szellmann.de, along with the output of e.g. `cat /proc/cpuinfo` or sth. similar).
