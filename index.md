@@ -24,7 +24,7 @@ For our paper [Visionaray: A Cross-Platform Ray Tracing Template Library](https:
     <td>Sibenik Cathedral</td>
   </tr>
   <tr>
-    <td>Intel KNL with 64 cores and 256 threads</td>
+    <td>Intel KNL with 64x4 threads</td>
     <td>254.0 (273.2)</td>
     <td>130.0 (130.4)</td>
     <td>247.7 (268.2)</td>
