@@ -30,7 +30,7 @@ For our paper [Visionaray: A Cross-Platform Ray Tracing Template Library](https:
     <td>247.7 (268.2)</td>
   </tr>
   <tr>
-    <td>NVIDIA GTX 980 Ti</td>
+    <td>NVIDIA GTX 980Ti</td>
     <td>172.9 (228.3)</td>
     <td>73.4 (83.3)</td>
     <td>139.1 (188.5)</td>
@@ -64,3 +64,9 @@ For our paper [Visionaray: A Cross-Platform Ray Tracing Template Library](https:
 Results are in Mrays/s, 1024 x 1024 px. images, averaged over 250 runs, 8 AO rays. We report results for the [binned BVH builder](http://www.sci.utah.edu/~wald/Publications/2007/ParallelBVHBuild/fastbuild.pdf), and the [SBVH builder](http://www.nvidia.ca/docs/IO/77714/sbvh.pdf) in parentheses.
 
 A tarball containing the benchmark script can be downloaded from [here](https://github.com/szellmann/szellmann.github.io/blob/master/res/ao_bench.tar.gz). Results for hardware platforms not listed here are highly welcome (please send those to info (at) szellmann.de, along with the output of e.g. `cat /proc/cpuinfo` or sth. similar).
+
+Contributors
+------------
+
+Thanks go to:
+  - Matthias Hellmann for providing the GTX 980Ti and GTX 970M results
