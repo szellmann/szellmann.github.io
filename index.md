@@ -49,4 +49,4 @@ For our paper [Visionaray: A Cross-Platform Ray Tracing Template Library](https:
   </tr>
 </table>
 
-Results in million rays per second, [binned BVH builder](http://www.sci.utah.edu/~wald/Publications/2007/ParallelBVHBuild/fastbuild.pdf), and [SBVH builder](http://www.nvidia.ca/docs/IO/77714/sbvh.pdf) in parentheses.
+Results are in Mrays/s, 1024 x 1024 px. images, averaged over 250 runs, 8 AO rays. We report results for the [binned BVH builder](http://www.sci.utah.edu/~wald/Publications/2007/ParallelBVHBuild/fastbuild.pdf), and the [SBVH builder](http://www.nvidia.ca/docs/IO/77714/sbvh.pdf) in parentheses.
