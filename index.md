@@ -4,7 +4,7 @@ For our paper "Visionaray: A Cross-Platform Ray Tracing Template Library", we re
 
 <table border="0">
   <tr>
-    <td></td>
+    <td width="200"></td>
     <td>
       <img src="img/conference_ao.png" alt="Conference Room" width="200" class="inline" />
     </td>
