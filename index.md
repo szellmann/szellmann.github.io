@@ -30,6 +30,12 @@ For our paper [Visionaray: A Cross-Platform Ray Tracing Template Library](https:
     <td>1.7 (1.9)</td>
   </tr>
   <tr>
+    <td>NVIDIA GTX 970M</td>
+    <td>83.6 (107.1)</td>
+    <td>32.7 (36.4)</td>
+    <td>63.9 (87.9)</td>
+  </tr>
+  <tr>
     <td>16-core dual socket Xeon E5-2690</td>
     <td>102.0 (117.0)</td>
     <td>55.0 (57.1)</td>
@@ -37,9 +43,15 @@ For our paper [Visionaray: A Cross-Platform Ray Tracing Template Library](https:
   </tr>
   <tr>
     <td>NVIDIA Quadro K6000</td>
-    <td>142.4.0 (189.1)</td>
+    <td>142.4 (189.1)</td>
     <td>63.1 (71.1)</td>
     <td>113.2 (142.9)</td>
+  </tr>
+  <tr>
+    <td>NVIDIA GTX 980 Ti</td>
+    <td>172.9 (228.3)</td>
+    <td>73.4 (83.3)</td>
+    <td>139.1 (188.5)</td>
   </tr>
   <tr>
     <td>Intel KNL with 64 cores and 256 threads</td>
