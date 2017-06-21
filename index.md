@@ -23,10 +23,7 @@ For our paper "Visionaray: A Cross-Platform Ray Tracing Template Library", we re
   </tr>
   <tr>
     <td>Raspberry PI3 with ARM NEON</td>
-    <td>
-      2.0 Mrays/s<br />
-      (2.3 Mrays/s)
-    </td>
+    <td>2.0 (2.3)</td>
     <td>1.2 (1.3)</td>
     <td>1.7 (1.9)</td>
   </tr>
