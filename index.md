@@ -24,6 +24,12 @@ For our paper [Visionaray: A Cross-Platform Ray Tracing Template Library](https:
     <td>Sibenik Cathedral</td>
   </tr>
   <tr>
+    <td>NVIDIA GTX 1080Ti</td>
+    <td>290.7 (290.9)</td>
+    <td>143.4 (143.5)</td>
+    <td>288.5 (290.7)</td>
+  </tr>
+  <tr>
     <td>Intel KNL with 64x4 threads</td>
     <td>254.0 (273.2)</td>
     <td>130.0 (130.4)</td>
