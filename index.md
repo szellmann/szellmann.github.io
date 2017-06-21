@@ -66,6 +66,12 @@ For our paper [Visionaray: A Cross-Platform Ray Tracing Template Library](https:
     <td>63.9 (87.9)</td>
   </tr>
   <tr>
+    <td>Apple MBP Mid 2014 2.8 GHz Core i7, 4x2 threads</td>
+    <td>41.8 (46.2)</td>
+    <td>20.8 (21.0)</td>
+    <td>34.7 (39.4)</td>
+  </tr>
+  <tr>
     <td>Nehalem Core i7 920, 2.67 GHz, 4x2 threads</td>
     <td>20.7 (21.9)</td>
     <td>11.4 (11.9)</td>
