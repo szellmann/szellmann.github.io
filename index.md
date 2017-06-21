@@ -5,7 +5,7 @@ For our paper "Visionaray: A Cross-Platform Ray Tracing Template Library", we re
 <table border="0">
   <tr>
     <td>
-      <img src="img/conference_ao.png" alt="Conference Room" class="inline" />
+      <img src="img/conference_ao.png" alt="Conference Room" width="200" class="inline" />
     </td>
     <td>
       <img src="img/fairy_ao.png" alt="Fairy Forest" class="inline" />
