@@ -48,16 +48,16 @@ For our paper [Visionaray: A Cross-Platform Ray Tracing Template Library](https:
     <td>113.2 (142.9)</td>
   </tr>
   <tr>
-    <td>16-core dual socket Xeon E5-2690</td>
-    <td>102.0 (117.0)</td>
-    <td>55.0 (57.1)</td>
-    <td>94.2 (105.6)</td>
-  </tr>
-  <tr>
     <td>NVIDIA Titan (1st gen, Kepler)</td>
     <td>114.4 (143.3)</td>
     <td>55.5 (56.9)</td>
     <td>81.5 (114.4)</td>
+  </tr>
+  <tr>
+    <td>16-core dual socket Xeon E5-2690</td>
+    <td>102.0 (117.0)</td>
+    <td>55.0 (57.1)</td>
+    <td>94.2 (105.6)</td>
   </tr>
   <tr>
     <td>NVIDIA GTX 970M</td>
