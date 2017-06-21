@@ -66,6 +66,12 @@ For our paper [Visionaray: A Cross-Platform Ray Tracing Template Library](https:
     <td>63.9 (87.9)</td>
   </tr>
   <tr>
+    <td>Nehalem Core i7 920, 2.67 GHz, 4x2 threads</td>
+    <td>20.7 (21.9)</td>
+    <td>11.4 (11.9)</td>
+    <td>15.9 (18.5)</td>
+  </tr>
+  <tr>
     <td>Raspberry PI3 with ARM NEON</td>
     <td>2.0 (2.3)</td>
     <td>1.2 (1.3)</td>
