@@ -20,7 +20,7 @@ fi
 #
 
 rm -rf $BASEDIR/build
-rm -rf $BASEDIR/results
+rm -rf $BASEDIR/results/cuda
 rm -rf $BASEDIR/visionaray
 
 
@@ -69,23 +69,22 @@ fi
 # Run bechmarks
 #
 
-mkdir -p $BASEDIR/results
+mkdir -p $BASEDIR/results/cuda
 echo "Conference benchmark, no spatial splits..."
-$BENCHMARK $BASEDIR/models/conference.obj -radius=100 -camera=$BASEDIR/cameras/conference-camera.txt -width=1024 -height=1024 -bgcolor 1 1 1 > $BASEDIR/results/conference_binned.txt
+$BENCHMARK $BASEDIR/models/conference.obj -radius=100 -camera=$BASEDIR/cameras/conference-camera.txt -width=1024 -height=1024 -bgcolor 1 1 1 > $BASEDIR/results/cuda/conference_binned.txt
 
 echo "Fairy benchmark, no spatial splits..."
-$BENCHMARK $BASEDIR/models/f000.obj -radius=0.5 -camera=$BASEDIR/cameras/fairy-camera.txt -width=1024 -height=1024 -bgcolor 1 1 1 > $BASEDIR/results/fairy_binned.txt
+$BENCHMARK $BASEDIR/models/f000.obj -radius=0.5 -camera=$BASEDIR/cameras/fairy-camera.txt -width=1024 -height=1024 -bgcolor 1 1 1 > $BASEDIR/results/cuda/fairy_binned.txt
 
 echo "Sibenik benchmark, no spatial splits..."
-$BENCHMARK $BASEDIR/models/sibenik.obj -radius=0.5 -camera=$BASEDIR/cameras/sibenik-camera.txt -width=1024 -height=1024 -bgcolor 1 1 1 > $BASEDIR/results/sibenik_binned.txt
+$BENCHMARK $BASEDIR/models/sibenik.obj -radius=0.5 -camera=$BASEDIR/cameras/sibenik-camera.txt -width=1024 -height=1024 -bgcolor 1 1 1 > $BASEDIR/results/cuda/sibenik_binned.txt
 
 
-mkdir -p $BASEDIR/results
 echo "Conference benchmark, spatial splits activated..."
-$BENCHMARK $BASEDIR/models/conference.obj -radius=100 -camera=$BASEDIR/cameras/conference-camera.txt -width=1024 -height=1024 -bgcolor 1 1 1 -bvh=split > $BASEDIR/results/conference_split.txt
+$BENCHMARK $BASEDIR/models/conference.obj -radius=100 -camera=$BASEDIR/cameras/conference-camera.txt -width=1024 -height=1024 -bgcolor 1 1 1 -bvh=split > $BASEDIR/results/cuda/conference_split.txt
 
 echo "Fairy benchmark, spatial splits activated..."
-$BENCHMARK $BASEDIR/models/f000.obj -radius=0.5 -camera=$BASEDIR/cameras/fairy-camera.txt -width=1024 -height=1024 -bgcolor 1 1 1 -bvh=split > $BASEDIR/results/fairy_split.txt
+$BENCHMARK $BASEDIR/models/f000.obj -radius=0.5 -camera=$BASEDIR/cameras/fairy-camera.txt -width=1024 -height=1024 -bgcolor 1 1 1 -bvh=split > $BASEDIR/results/cuda/fairy_split.txt
 
 echo "Sibenik benchmark, spatial splits activated..."
-$BENCHMARK $BASEDIR/models/sibenik.obj -radius=0.5 -camera=$BASEDIR/cameras/sibenik-camera.txt -width=1024 -height=1024 -bgcolor 1 1 1 -bvh=split > $BASEDIR/results/sibenik_split.txt
+$BENCHMARK $BASEDIR/models/sibenik.obj -radius=0.5 -camera=$BASEDIR/cameras/sibenik-camera.txt -width=1024 -height=1024 -bgcolor 1 1 1 -bvh=split > $BASEDIR/results/cuda/sibenik_split.txt

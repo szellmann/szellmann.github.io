@@ -1,12 +1,12 @@
-From 02067eab3e7faebdeaf29017e3b3dec0b79f556d Mon Sep 17 00:00:00 2001
+From 7371547b897c5d98682217d2cab6e2ba2703edc1 Mon Sep 17 00:00:00 2001
 From: Stefan Zellmann <info@szellmann.de>
 Date: Tue, 20 Jun 2017 16:12:15 +0200
 Subject: [PATCH] Benchmark AVX
 
 ---
  src/common/obj_loader.cpp | 16 ++++++++--------
- src/examples/ao/main.cpp  | 32 +++++++++++++++++++++++++++++---
- 2 files changed, 37 insertions(+), 11 deletions(-)
+ src/examples/ao/main.cpp  | 35 +++++++++++++++++++++++++++++++----
+ 2 files changed, 39 insertions(+), 12 deletions(-)
 
 diff --git a/src/common/obj_loader.cpp b/src/common/obj_loader.cpp
 index 1d421f1c..f68906d8 100644
@@ -71,10 +71,10 @@ index 1d421f1c..f68906d8 100644
  
              geom_id = mod.materials.size() == 0 ? 0 : mod.materials.size() - 1;
 diff --git a/src/examples/ao/main.cpp b/src/examples/ao/main.cpp
-index 3f3ac6f1..6ed3206d 100644
+index 3f3ac6f1..16ea5885 100644
 --- a/src/examples/ao/main.cpp
 +++ b/src/examples/ao/main.cpp
-@@ -1,8 +1,10 @@
+@@ -1,11 +1,14 @@
  // This file is distributed under the MIT license.
  // See the LICENSE file for details.
  
@@ -85,7 +85,11 @@ index 3f3ac6f1..6ed3206d 100644
  #include <iostream>
  #include <memory>
  #include <ostream>
-@@ -30,6 +32,7 @@
++#include <numeric>
+ #include <string>
+ 
+ #include <GL/glew.h>
+@@ -30,6 +33,7 @@
  
  #include <common/model.h>
  #include <common/obj_loader.h>
@@ -93,7 +97,7 @@ index 3f3ac6f1..6ed3206d 100644
  #include <common/viewer_glut.h>
  
  using namespace visionaray;
-@@ -43,7 +46,7 @@ using viewer_type = viewer_glut;
+@@ -43,11 +47,11 @@ using viewer_type = viewer_glut;
  
  struct renderer : viewer_type
  {
@@ -102,7 +106,12 @@ index 3f3ac6f1..6ed3206d 100644
  
      renderer()
          : viewer_type(512, 512, "Visionaray Ambient Occlusion Example")
-@@ -116,6 +119,10 @@ struct renderer : viewer_type
+-        , host_sched(8)
++        , host_sched(std::thread::hardware_concurrency())
+     {
+         using namespace support;
+ 
+@@ -116,6 +120,10 @@ struct renderer : viewer_type
      int                                         AO_Samples      = 8;
      float                                       AO_Radius       = 0.1f;
  
@@ -113,7 +122,7 @@ index 3f3ac6f1..6ed3206d 100644
  protected:
  
      void on_display();
-@@ -181,6 +188,10 @@ void renderer::on_display()
+@@ -181,6 +189,10 @@ void renderer::on_display()
  
      auto bgcolor = background_color();
  
@@ -124,7 +133,7 @@ index 3f3ac6f1..6ed3206d 100644
      host_sched.frame([&](R ray, random_sampler<S>& samp) -> result_record<S>
      {
          result_record<S> result;
-@@ -245,6 +256,21 @@ void renderer::on_display()
+@@ -245,6 +257,21 @@ void renderer::on_display()
  
          return result;
      }, sparams, ++frame_num);
@@ -146,7 +155,7 @@ index 3f3ac6f1..6ed3206d 100644
  
  
      // display the rendered image
-@@ -359,7 +385,7 @@ int main(int argc, char** argv)
+@@ -359,7 +386,7 @@ int main(int argc, char** argv)
          return EXIT_FAILURE;
      }
  
@@ -155,7 +164,7 @@ index 3f3ac6f1..6ed3206d 100644
  
      rend.host_bvh = build<index_bvh<model::triangle_type>>(
              rend.mod.primitives.data(),
-@@ -367,7 +393,7 @@ int main(int argc, char** argv)
+@@ -367,7 +394,7 @@ int main(int argc, char** argv)
              rend.builder == renderer::Split
              );
  
@@ -165,5 +174,5 @@ index 3f3ac6f1..6ed3206d 100644
      float aspect = rend.width() / static_cast<float>(rend.height());
  
 -- 
-2.11.0
+2.13.1
 
