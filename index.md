@@ -66,6 +66,12 @@ For our paper [Visionaray: A Cross-Platform Ray Tracing Template Library](https:
     <td>63.9 (87.9)</td>
   </tr>
   <tr>
+    <td>Intel Core i7 6800K, 6x2 threads</td>
+    <td>80.1 (89.4)</td>
+    <td>40.6 (41.7)</td>
+    <td>68.6 (77.8)</td>
+  </tr>
+  <tr>
     <td>Apple MBP Mid 2014 2.8 GHz Core i7, 4x2 threads</td>
     <td>41.8 (46.2)</td>
     <td>20.8 (21.0)</td>
@@ -93,4 +99,5 @@ Contributors
 ------------
 
 Thanks go to:
+  - Martin Aumüller for the i7 6800K results
   - Matthias Hellmann for providing the GTX 980Ti and GTX 970M results
