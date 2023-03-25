@@ -42,6 +42,12 @@ For our paper [Visionaray: A Cross-Platform Ray Tracing Template Library](https:
     <td>247.7 (268.2)</td>
   </tr>
   <tr>
+    <td>AMD Ryzen 7 4700G, 8x2 threads</td>
+    <td>195.7 (214.0)</td>
+    <td>92.4 (93.7)</td>
+    <td>168.6 (187.9)</td>
+  </tr>
+  <tr>
     <td>NVIDIA GTX 980Ti</td>
     <td>172.9 (228.3)</td>
     <td>73.4 (83.3)</td>
