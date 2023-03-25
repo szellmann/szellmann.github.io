@@ -66,6 +66,12 @@ For our paper [Visionaray: A Cross-Platform Ray Tracing Template Library](https:
     <td>63.9 (87.9)</td>
   </tr>
   <tr>
+    <td>Apple MBP M2 Max, 2023, 8 threads (perf.) + 4 threads (eff.)</td>
+    <td>96.3 (108.2)</td>
+    <td>48.2 (50.8)</td>
+    <td>81.9 (91.9)</td>
+  </tr>
+  <tr>
     <td>Intel Core i7 6800K, 6x2 threads</td>
     <td>80.1 (89.4)</td>
     <td>40.6 (41.7)</td>
