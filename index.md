@@ -60,16 +60,16 @@ For our paper [Visionaray: A Cross-Platform Ray Tracing Template Library](https:
     <td>94.2 (105.6)</td>
   </tr>
   <tr>
-    <td>NVIDIA GTX 970M</td>
-    <td>83.6 (107.1)</td>
-    <td>32.7 (36.4)</td>
-    <td>63.9 (87.9)</td>
-  </tr>
-  <tr>
     <td>Apple MBP M2 Max, 2023, 8 threads (perf.) + 4 threads (eff.)</td>
     <td>96.3 (108.2)</td>
     <td>48.2 (50.8)</td>
     <td>81.9 (91.9)</td>
+  </tr>
+  <tr>
+    <td>NVIDIA GTX 970M</td>
+    <td>83.6 (107.1)</td>
+    <td>32.7 (36.4)</td>
+    <td>63.9 (87.9)</td>
   </tr>
   <tr>
     <td>Intel Core i7 6800K, 6x2 threads</td>
