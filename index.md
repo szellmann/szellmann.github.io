@@ -24,7 +24,13 @@ For our paper [Visionaray: A Cross-Platform Ray Tracing Template Library](https:
     <td>Sibenik Cathedral</td>
   </tr>
   <tr>
-    <td>NVIDIA RTX 3060Ti (RTX=OFF!)</td>
+    <td>NVIDIA RTX A6000 (RTX=OFF)</td>
+    <td>588.3 (586.2)</td>
+    <td>291.9 (294.2)</td>
+    <td>597.3 (588.6)</td>
+  </tr>
+  <tr>
+    <td>NVIDIA RTX 3060Ti (RTX=OFF)</td>
     <td>558.0 (580.8)</td>
     <td>190.4 (190.5)</td>
     <td>286.7 (578.4)</td>
